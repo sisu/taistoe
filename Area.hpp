@@ -1,7 +1,14 @@
-struct Block {
-	double h[2][2];
-};
+#ifndef AREA_HPP
+#define AREA_HPP
+
 struct Area {
 	int w,h;
-	Block* a;
+	double* a;
+	double operator()(int x, int y) {
+		if (x<0||y<0||x>=w||y>=h) return 1e20;
+		return a[y*w+x];
+	}
+	void generate(int w, int h);
 };
+
+#endif

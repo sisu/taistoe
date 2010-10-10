@@ -9,7 +9,8 @@ void moveUnits(Unit* us, int n)
 		Unit& u = us[i];
 		Vec3 m = u.m;
 		if (u.p.y==0) {
-			u.v = 20*m;
+			m.y *= 1.5;
+			u.v = 16*m;
 		} else {
 			m.y = 0;
 			u.v += .5*m;
