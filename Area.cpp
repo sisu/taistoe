@@ -9,6 +9,6 @@ void Area::generate(int ww, int hh)
 	delete[] a;
 	a = new double[w*h];
 	memset(a,0,w*h*sizeof(a[0]));
-	for(int i=0; i*i<w*h; ++i)
-		a[rng()%(w*h)] = rndf();
+	for(int i=0; i*i<5*w*h; ++i)
+		a[rng()%(w*h)] = 2*rndf();
 }

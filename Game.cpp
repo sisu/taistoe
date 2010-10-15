@@ -4,7 +4,7 @@
 
 void Game::updatePhysics()
 {
-	moveUnits(&units[0], units.size());
+	moveUnits(&units[0], units.size(), area);
 }
 void Game::draw()
 {
