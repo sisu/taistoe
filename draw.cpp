@@ -58,7 +58,13 @@ void setLights()
 }
 void setHeightColor(double h)
 {
-	glColor3f(.3*h, .5+.4*h, .3*h);
+	if (.4*h <= .5) {
+		glColor3f(.3*h, .5+.4*h, .3*h);
+	} else {
+		double hh = h - .5/.4;
+		double s = .3 * .5/.4;
+		glColor3f(s + .3*hh, 1-.2*hh, s+.05*hh);
+	}
 }
 void drawArea(Area& a)
 {
