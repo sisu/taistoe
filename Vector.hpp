@@ -7,7 +7,7 @@ struct Vec3;
 struct Vec2 {
 	Vec2() {}
 	Vec2(double x, double y): x(x), y(y) {}
-	Vec2(const Vec3& v);
+	explicit Vec2(const Vec3& v);
 	double x,y;
 };
 #define OP(op,ope)\
@@ -72,6 +72,16 @@ OP(*,*=)
 OP(/,/=)
 #undef OP
 inline Vec3 operator*(double x, Vec3 v) {return v*=x;}
+inline Vec3 operator-(Vec3 v) {
+	return v*=-1;
+}
+
+inline bool operator==(const Vec3& a, const Vec3& b) {
+	return a.x==b.x && a.y==b.y && a.z==b.z;
+}
+inline bool operator!=(const Vec3& a, const Vec3& b) {
+	return !(a==b);
+}
 
 inline double length2(const Vec3& v)
 {
@@ -88,6 +98,13 @@ inline Vec3 cross(const Vec3& a, const Vec3& b)
 		a.z*b.x - a.x*b.z,
 		a.x*b.y - a.y*b.x
 	);
+}
+inline double dot(const Vec3& a, const Vec3& b)
+{
+	return a.x*b.x + a.y*b.y + a.z*b.z;
+}
+inline Vec3 normalize(Vec3 v) {
+	return v/=length(v);
 }
 
 inline Vec2::Vec2(const Vec3& v)
@@ -107,6 +124,10 @@ inline Vec3 rvec3()
 inline std::ostream& operator<<(std::ostream& o, const Vec2& v)
 {
 	return o<<'('<<v.x<<','<<v.y<<')';
+}
+inline std::ostream& operator<<(std::ostream& o, const Vec3& v)
+{
+	return o<<'('<<v.x<<','<<v.y<<','<<v.z<<')';
 }
 
 #endif

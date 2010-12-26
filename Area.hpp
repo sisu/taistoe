@@ -4,7 +4,7 @@
 struct Area {
 	int w,h;
 	double* a;
-	double operator()(int x, int y) {
+	double height(int x, int y) {
 		if (x<0||y<0||x>=w||y>=h) return 1e20;
 		return a[y*w+x];
 	}

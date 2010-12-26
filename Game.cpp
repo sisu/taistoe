@@ -1,6 +1,8 @@
 #include "Game.hpp"
 #include "physics.hpp"
 #include "draw.hpp"
+#include <iostream>
+using namespace std;
 
 void Game::updatePhysics()
 {
