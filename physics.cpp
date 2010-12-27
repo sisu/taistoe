@@ -62,10 +62,21 @@ void fixHit(Unit& u, Vec3 old, Area& a)
 	for(int i=0; i<3; ++i)
 		for(int j=0; j<3; ++j) {
 			if (i==1&&j==1) continue;
+			if (i!=1&&j!=1) continue;
 			// FIXME: these may be wrong when floor(old)!=floor(p)
 			double zs[] = {(double)iz, p.z, iz+1.};
 			double xs[] = {(double)ix, p.x, ix+1.};
 			Vec3 v(xs[j], a.height(ix-1+j, iz-1+i), zs[i]);
+			Vec3 pp = p;
+			Vec3 dir(1-j, 0, 1-i);
+			limitPoint(p, old, v, dir);
+//			if (p!=pp) cout<<"change at "<<i<<' '<<j<<": "<<p<<' '<<pp<<'\n';
+		}
+	for(int i=0; i<2; ++i)
+		for(int j=0; j<2; ++j) {
+			double zs[] = {(double)iz, iz+1.};
+			double xs[] = {(double)ix, ix+1.};
+			Vec3 v(xs[j], a.height(ix-1+2*j, iz-1+2*i), zs[i]);
 			Vec3 pp = p;
 			if (i!=1&&j!=1) {
 				// FIXME: handle corners in proper way
@@ -73,9 +84,6 @@ void fixHit(Unit& u, Vec3 old, Area& a)
 //				if (p.x!=pp.x || p.z!=pp.z) cout<<"fixPointDist change @ "<<i<<' '<<j<<": "<<p<<' '<<pp<<'\n';
 				continue;
 			}
-			Vec3 dir(1-j, 0, 1-i);
-			limitPoint(p, old, v, dir);
-//			if (p!=pp) cout<<"change at "<<i<<' '<<j<<": "<<p<<' '<<pp<<'\n';
 		}
 #endif
 

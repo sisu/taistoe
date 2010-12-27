@@ -17,7 +17,7 @@ void Area::generate(int ww, int hh)
 		const int s=10;
 		int ww = min(int(1+(rng()%s)), w-x0);
 		int hh = min(int(1+(rng()%s)), h-y0);
-		double yy = 2*rndf();
+		double yy = 5*rndf();
 		for(int y=0; y<hh; ++y) for(int x=0; x<ww; ++x) a[w*(y0+y) + x0+x] = yy;
 	}
 }

@@ -18,5 +18,5 @@ void Game::init()
 	units.clear();
 	units.push_back(Unit());
 	player = &units[0];
-	area.generate(64,64);
+	area.generate(64,256);
 }
