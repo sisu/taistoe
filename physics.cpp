@@ -116,7 +116,10 @@ void moveUnits(Unit* us, int n, Area& a)
 			u.v = 16*m;
 		} else {
 			m.y = 0;
-			u.v += .5*m;
+//			u.v += .5*m;
+			double y0 = u.v.y;
+			u.v = 16*m;
+			u.v.y = y0;
 		}
 		u.v.y -= PHYS_FRAME * 100;
 //		cout<<"m "<<u.m<<'\n';
