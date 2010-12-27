@@ -18,7 +18,7 @@ void limitPoint(Vec3& v, Vec3 old, Vec3 p, Vec3 d)
 	}
 	p.y = v.y;
 //	cout<<"fixing "<<v<<' '<<p<<' '<<d<<' '<<dot(d,p-v)<<" ; "<<old<<" ; "<<p0<<'\n';
-	v += (1+1e-5) * dot(d,p-v) * d;
+	v += dot(d,p-v) * d;
 }
 // FIXME: This function is used for taisto2-style boundary checking,
 // which may lead to units getting inside walls.
