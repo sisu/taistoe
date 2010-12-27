@@ -72,18 +72,16 @@ void fixHit(Unit& u, Vec3 old, Area& a)
 			limitPoint(p, old, v, dir);
 //			if (p!=pp) cout<<"change at "<<i<<' '<<j<<": "<<p<<' '<<pp<<'\n';
 		}
+	// FIXME: handle corners in proper way
 	for(int i=0; i<2; ++i)
 		for(int j=0; j<2; ++j) {
 			double zs[] = {(double)iz, iz+1.};
 			double xs[] = {(double)ix, ix+1.};
 			Vec3 v(xs[j], a.height(ix-1+2*j, iz-1+2*i), zs[i]);
 			Vec3 pp = p;
-			if (i!=1&&j!=1) {
-				// FIXME: handle corners in proper way
-				fixPointDist(p, old, v);
-//				if (p.x!=pp.x || p.z!=pp.z) cout<<"fixPointDist change @ "<<i<<' '<<j<<": "<<p<<' '<<pp<<'\n';
-				continue;
-			}
+			fixPointDist(p, old, v);
+//			if (p.x!=pp.x || p.z!=pp.z) cout<<"fixPointDist change @ "<<i<<' '<<j<<": "<<p<<' '<<pp<<'\n';
+			continue;
 		}
 #endif
 
