@@ -27,7 +27,7 @@ void handleMove()
 {
 	SDL_PumpEvents();
 	Uint8* s = SDL_GetKeyState(0);
-	Unit& p = *game.player;
+	Unit& p = game.player;
 	Vec3& m = p.m;
 	m.x = s[SDLK_RIGHT] - s[SDLK_LEFT];
 	m.z = s[SDLK_UP] - s[SDLK_DOWN];

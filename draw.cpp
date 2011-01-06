@@ -6,6 +6,7 @@
 #include "Area.hpp"
 #include "physics.hpp"
 #include <vector>
+#include <iostream>
 using namespace std;
 
 
@@ -39,6 +40,7 @@ void drawUnit(Unit& u)
 		}
 		glEnd();
 	}
+	glPopMatrix();
 }
 
 void setProjection()
@@ -103,7 +105,7 @@ void drawFrame(Game& g)
 
 	glTranslatef(0, 0, -20);
 	glRotatef(40, 1, 0, 0);
-	Unit& pl = *g.player;
+	Unit& pl = g.player;
 	glTranslatef(-pl.p.x, 0, pl.p.z);
 
 	drawArea(g.area);

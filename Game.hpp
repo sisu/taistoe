@@ -3,11 +3,15 @@
 #include <vector>
 struct Game {
 	std::vector<Unit> units;
-	Unit* player;
+	Unit player;
 	bool done;
 	Area area;
 
 	void updatePhysics();
 	void draw();
 	void init();
+
+	void moveBots();
+	void spawnBots();
+	double botSpawnTime;
 };

@@ -111,7 +111,7 @@ void moveUnits(Unit* us, int n, Area& a)
 		Unit& u = us[i];
 		Vec3 m = u.m;
 		Vec3 p = u.p;
-		if (u.p.y==a.height(p.x,p.z)) {
+		if (u.p.y==a.height(p.x,p.z)) { // FIXME: this check is not enough
 			m.y *= 1.5;
 			u.v = 16*m;
 		} else {
